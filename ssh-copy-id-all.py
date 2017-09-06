@@ -4,8 +4,8 @@ import sys
 import subprocess
 
 
-USER='guofubao'
-PASSWD='WeeF*K&N'
+USER='root'
+PASSWD='root'
 
 def usage():
     fname='%s' % sys.argv[0]
