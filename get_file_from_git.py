@@ -12,14 +12,19 @@ git_cmd = ""
 
 def main():
     for g in git_list:
-        git_down_path = gits_path + g.split("/")[-1]
+        git_down_path = gits_path + g.split(":")[-1].split("/")[-1].split(".git")[0]
         if os.path.exists(git_down_path):
-            cd_cmd = "cd %s" % git_down_path
-            subprocess.call(cd_cmd, shell=True)
+	    os.chdir(git_down_path)
+	    out_str="cd %s && git pull" % git_down_path
+            print out_str
             git_cmd = "git pull"
         else:
-            git_cmd = "git clone %s %s" % (g, git_down_path)
+	    os.chdir(gits_path)
+	    git_cmd = "git clone %s" % (g)
+	    out_str="cd %s && %s" % (gits_path,g)
+	    print out_str
         subprocess.call(git_cmd, shell=True)
+
 
 if __name__ == '__main__':
     main()
