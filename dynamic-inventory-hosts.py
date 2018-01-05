@@ -92,3 +92,6 @@ if __name__ == '__main__':
 #方法 hosts 返回
 #python hosts.py -H 192.168.1.2
 #｛"ansible_ssh_port":"22"｝
+
+#ansible针对某一分组(up_test)测试ping
+#ansible -i hosts.py up_test -m ping
